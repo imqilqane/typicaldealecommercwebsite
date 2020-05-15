@@ -11,7 +11,7 @@ from django.utils import timezone
 import stripe
 import string
 import random
-stripe.api_key = "sk_test_vE5AoHAcAujqNog95BYX3bjR00QywPF0Gg"
+stripe.api_key = "sk_test_vE5AoHAcAujqNog95BYXXXXXXXXXXXXXXXX"
 
 # Create your views here.
 
