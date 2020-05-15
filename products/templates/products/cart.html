@@ -1,0 +1,47 @@
+{% extends 'products/base.html' %}
+{% block content %}
+<div class="table-responsive text-nowrap">
+<h3>Orders Summery</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Unit Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for cart in carts %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{cart.item.name}}</td>
+          <td>$ {{cart.item.price}}</td>
+          <td><a href="{% url 'core:remove' cart.item.id %}"><i class="mr-2 fas fa-minus"></i></a>{{cart.quantity}}<a href="{% url 'core:AddToCart' cart.item.pk %}"><i class=" ml-2 fas fa-plus"></i></a></td>
+          <td>$ {{cart.get_item_total}}</td>
+          <td><a href="{% url 'core:DeleteItem' cart.item.id %}"><i style="color: red;" class="far fa-trash-alt"></i></a></td>
+        </tr>
+        {% endfor %}
+        <tr>
+          <th scope="row"></th>
+          {% if order.coupon %}
+          <td colspan="3"><b>Total after discount</b></td>
+          <td><b>$ {{order.get_total_after_coupon}}</b></td>
+          {% else %}
+          <td colspan="3"><b>Total </b></td>
+          <td><b>$ {{order.get_total}}</b></td>
+          {% endif %}
+        </tr>
+        <tr>
+          <th scope="row"></th>
+          <td colspan="4" class="text-right ">
+            <a href="{% url 'core:home' %}" class="btn btn-warning mr-4">Continue Shoping</a>
+            <a href="{% url 'core:checkout' %}" class="btn btn-success mr-4">Proceed To Checkout</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
+{% endblock %}

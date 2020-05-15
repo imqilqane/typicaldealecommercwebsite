@@ -1,0 +1,11 @@
+{% extends 'products/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="table-responsive text-nowrap">
+<h3>Request refund</h3>
+<form method="POST" >{% csrf_token %}
+    {{form|crispy}}
+    <button class="btn btn-warning" type="submit">Submit</button>
+</form>
+  </div>
+{% endblock %}

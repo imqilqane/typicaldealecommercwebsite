@@ -1,0 +1,8 @@
+{% load main_m %}
+
+{% for category in tagscategories %}
+<li class="nav-item">
+    <a class="nav-link waves-effect" href="{% url 'core:productsoncategory' category.name %}" >{{category}}</a>
+</li>
+{% endfor %}
+           
